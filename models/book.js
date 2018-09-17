@@ -9,8 +9,6 @@ var BookSchema = new Schema(
     summary: {type: String, required: true},
     rating: {type: String, required: true, enum: ['*', '**', '***', '****', '*****'], default: '***'},
     genre: [{type: Schema.Types.ObjectId, ref: 'Genre'}],
-    chapters: [{type: Schema.Types.ObjectId, ref: 'Chapter'}],
-    favorite_chapters: [{type: Schema.Types.ObjectId, ref: 'Chapter'}],
     number_of_chapters: Number
   }
 );
