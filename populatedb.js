@@ -60,7 +60,7 @@ function genreCreate(name, cb) {
   }   );
 }
 
-function bookCreate(title, author, summary, rating, genre, chaps, favorite_chapters, number_of_chapters, cb) {
+function bookCreate(title, author, summary, rating, genre, number_of_chapters, cb) {
   bookdetail = { 
     title: title,
     author: author,
@@ -68,8 +68,6 @@ function bookCreate(title, author, summary, rating, genre, chaps, favorite_chapt
     rating: rating,
   }
   if (genre != false) bookdetail.genre = genre
-  if (chaps != false) bookdetail.chapters = chaps
-  if (favorite_chapters != false) bookdetail.favorite_chapters = favorite_chapters
   if (number_of_chapters != false) bookdetail.number_of_chapters = number_of_chapters
 
     
@@ -143,9 +141,7 @@ function createBooks(cb) {
             authors[0], 
             'There is a door at the end of a silent corridor. And it\'s aunting Harry Potter\'s dreams. Why else would he be waking in the middle of the night, screaming in terror? Here are just a few things on Harry\'s mind: - A Defense Against the Dark Arts teacher with a personality like poisoned honey. - A venomous, disgruntled house-elf. - Ron as a Keeper of the Gryffindor Quidditch team. -The looking terror of the end-of-term Ordinary Wizarding Level exams. ... and of course, the growing threat of He-Who-Must-Not-Be-Named. In the richest installment yet of J.K. Rowling\'s seven-part story, Harry Potter is faced with the unreliability of the very government of the magical world and the impotence of the authorities at Hogwarts. Despite this (or perhaps because of it), he finds depth and strength in his friends, beyond what even he knew; boundless loyalty; and unbearable sacrifice. Though thick runs the plot (as well as the spine), readers will race through these pages and leave Hogwarts, like Harry, wishing only for the next train back.', 
             '***', 
-            [genres[0],], 
-            [chapters[0], chapters[1],], 
-            [chapters[0],], 
+            [genres[0]], 
             38, 
             callback);
         },
@@ -155,9 +151,7 @@ function createBooks(cb) {
             authors[1], 
             'I long for the days before the Last Desolation. Before the Heralds abandoned us and the Kights Radiant turned against us. When there was still magic in Roshar and honor in hearts of men. In the end, not was but victory proved the greatest test. Did our foes see that the harder they fought, the fiercer our resistance? Fire and hammer forge a sword; time and neglect rust it away. So we won the world, yet lost it. Now there are four whom we watch: the surgeon, forced to forsake healing and fight in the most brutal war of our time; the assassin, who weeps as he kills; the liar, who wears her scholar\'s mantle over a thief\'s heart; and the prince, whose eyes open to the ancient past as his thirst for battle wanes. One of them may redeem us. One of them will destroy us.', 
             '***', 
-            [genres[2],], 
-            [chapters[2], chapters[3]], 
-            [chapters[3],], 
+            [genres[2]], 
             87, 
             callback);
         },
@@ -167,9 +161,7 @@ function createBooks(cb) {
             authors[2], 
             'Frodo inherits The Ring of power. Him and eight others make their way to Mordor, the only place that can destroy the Ring.', 
             '***', 
-            [genres[0], genres[1],], 
-            [chapters[4], chapters[5]], 
-            [chapters[4],], 
+            [genres[0], genres[1]], 
             27, 
             callback);
         }
@@ -177,7 +169,6 @@ function createBooks(cb) {
         // optional callback
         cb);
 }
-
 
 function createChapters(cb) {
     async.parallel([
