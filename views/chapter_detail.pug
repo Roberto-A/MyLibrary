@@ -1,0 +1,19 @@
+
+extends layout
+
+block content
+
+  h1 #{chapter.title}
+
+  p #[Strong Book:] 
+    a(href=chapter.book.url) #{chapter.book.title}
+  p #[Strong Summary:] #{chapter.summary}
+  p #[Strong Characters:] #{chapter.character_list}
+
+  div(style='margin-left:20px;margin-top:20px;')
+    h4 Notes
+
+    each note in chapter.notes
+      p - #{note}
+    else
+      p There are no notes.
