@@ -7,7 +7,18 @@ exports.chapter_list = function(req, res) {
 
 // Display detail page for a specific chapter.
 exports.chapter_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: chapter detail: ' + req.params.id);
+    Chapter.findById(req.params.id)
+    .populate('book')
+    .exec(function (err, chapter) {
+        if (err) { return next(err); }
+        if (chapter == null) {
+            var err = new Error('Chapter not found');
+            err.status = 404;
+            return next(err);
+        }
+
+        res.render('chapter_detail', { title: 'Chapter:', chapter: chapter});
+    });
 };
 
 // Display chapter create form on GET.
