@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 #{title}: #{book.title}
+
+  p #[strong Author:] 
+    a(href=book.author.url) #{book.author.name}
+  p #[strong Summary:] #{book.summary}
+  p #[strong Rating:] #{book.rating}
+  p #[strong Number of Chapters:] #{book.number_of_chapters}
+  p #[strong Genre:]&nbsp;
+    each val, index in book.genre
+      a(href=val.url) #{val.name}
+      if index < book.genre.length - 1
+        |, 
+
+  div(style='margin-left:20px;margin-top:20px;')
+    h4 Chapters
+
+    each chaps in chapterss
+      a(href=chaps.url) #{chaps.title}
+      br
+    else
+      p There are no chapters for this book.

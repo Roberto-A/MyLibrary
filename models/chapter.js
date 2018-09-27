@@ -19,5 +19,23 @@ ChapterSchema
   return '/catalog/chapter/' + this._id;
 });
 
+ChapterSchema
+.virtual('character_list')
+.get(function () {
+
+  var characs = this.characters.toString().split(',');
+  characters_list = '';
+
+  for (var i = 0; i < characs.length; ++i) {
+    characters_list += characs[i];
+
+    if (i < characs.length - 1) {
+      characters_list += ', ';
+
+    }
+  } 
+  return characters_list;
+});
+
 //Export model
 module.exports = mongoose.model('Chapter', ChapterSchema);
