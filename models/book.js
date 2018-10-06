@@ -6,8 +6,8 @@ var BookSchema = new Schema(
   {
     title: {type: String, required: true},
     author: {type: Schema.Types.ObjectId, ref: 'Author', required: true},
-    summary: {type: String, required: true},
-    rating: {type: String, required: true, enum: ['*', '**', '***', '****', '*****'], default: '***'},
+    summary: {type: String, default: 'n/a'},
+    rating: {type: String, enum: ['', '*', '**', '***', '****', '*****'], default: '***'},
     genre: [{type: Schema.Types.ObjectId, ref: 'Genre'}],
     number_of_chapters: Number
   }
