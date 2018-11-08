@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='book') *Book:
+      select#book.form-control(type='select' placeholder='Select book' name='book' required='true')
+        for book in book_list
+          if chapter
+            option(value=book._id selected=(chapter.book.toString()==book._id.toString() ? 'selected' : false)) #{book.title}
+          else
+            option(value=book._id) #{book.title}
+
+    div.form-group
+      label(for='title') *Title:
+      input#title.form-control(type='textarea', placeholder='Chapter title' name='title' required='true' value=(undefined===chapter ? '' : chapter.title))
+
+    div.form-group
+      label(for='summary') Summary:
+      input#summary.form-control(type='textarea', placeholder='Summary' name='summary' value=(undefined===chapter ? '' : chapter.summary))
+
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg
