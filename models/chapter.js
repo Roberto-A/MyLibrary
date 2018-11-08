@@ -6,7 +6,7 @@ var ChapterSchema = new Schema(
   {
     book: { type: Schema.Types.ObjectId, ref: 'Book', required: true }, //reference to the associated book
     title: {type: String, required: true},
-    summary: {type: String, required: true, default: 'Summary needed.'},
+    summary: {type: String, default: 'Summary needed.'},
     notes: [String],
     characters: [String]
   }
